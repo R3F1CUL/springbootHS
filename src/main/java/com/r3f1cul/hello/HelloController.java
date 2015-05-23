@@ -19,11 +19,11 @@ public class HelloController {
 
     @RequestMapping(value = "/login/{username}/{password}", method = RequestMethod.GET)
     public String login(@PathVariable String username, @PathVariable String password) {
-        LOGGER.info("Hellloooooooooo");
+        LOGGER.info("Inside login method...");
         if (!StringUtils.isEmpty(username) && (!StringUtils.isEmpty(password))) {
             return "Your usernmae is " + username + " and your password is " + password;
         }
-        return "Someting Wong";
+        return "Fail";
     }
 
 }
