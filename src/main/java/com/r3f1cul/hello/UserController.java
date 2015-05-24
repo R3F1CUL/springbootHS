@@ -12,7 +12,7 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String[] getAllUsers() {
-        String users[] = {"Ankit", "Bohra", "Xyz"};
+        String users[] = {"Ankit", "Bohra", "Xyz", "poop"};
         return users;
     }
 }
