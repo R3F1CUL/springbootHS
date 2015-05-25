@@ -12,6 +12,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
+apply plugin: 'codenarc'
 
 jar {
     baseName = 'gs-spring-boot'
@@ -38,6 +39,11 @@ findbugs {
 
 pmd {
     reportsDir = file("$project.buildDir/pmdReports")
+    sourceSets = [sourceSets.main]
+}
+
+codenarc {
+    reportsDir = file("$project.buildDir/codenarcReports")
     sourceSets = [sourceSets.main]
 }
 
