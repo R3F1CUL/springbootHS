@@ -21,6 +21,7 @@ jar {
 
 repositories {
     mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
 }
 
 findbugs {
@@ -32,9 +33,6 @@ findbugs {
     reportLevel = "high"
     visitors = ["FindSqlInjection", "SwitchFallthrough"]
     omitVisitors = ["FindNonShortCircuit"]
-//    includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
-//    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
-//    excludeBugsFilter = file("$rootProject.projectDir/config/findbugs/excludeBugsFilter.xml")
 }
 
 pmd {
@@ -47,18 +45,6 @@ codenarc {
     sourceSets = [sourceSets.main]
 }
 
-//
-//sourceSets {
-//    main {
-//        java {
-//            srcDir 'src/java'
-//        }
-//        resources {
-//            srcDir 'src/resources'
-//        }
-//    }
-//}
-
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
@@ -66,6 +52,9 @@ dependencies {
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+    compile ('com.h2database:h2:1.4.187')
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
 //            {
 //        exclude module: "spring-boot-starter-tomcat"
 //    }
@@ -82,3 +71,4 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
+

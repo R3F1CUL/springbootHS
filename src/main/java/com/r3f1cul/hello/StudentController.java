@@ -24,7 +24,7 @@ public class StudentController {
         student.setAge(5);
         student.setFirstName("First");
         student.setLastName("Last");
-        student.setId(1);
+        student.setId((long) 1);
 
         studentList.add(student);
 

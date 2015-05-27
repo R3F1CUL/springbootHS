@@ -1,19 +1,39 @@
 package com.r3f1cul.hello;
 
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by R3F1CUL on 5/26/2015.
  */
+@Entity
 public class Student {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
     private String firstName;
     private String lastName;
     private int age;
 
-    public long getId() {
+    public Student() {
+    }
+
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
