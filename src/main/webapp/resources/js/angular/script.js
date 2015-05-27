@@ -14,6 +14,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
          templateUrl: '/partials/settings.html',
          controller: 'second'
      }).
+     when('/analytics', {
+         templateUrl: '/partials/analytics.html',
+         controller: 'second'
+     }).
      otherwise({
          redirectTo: '/overview'
      });
