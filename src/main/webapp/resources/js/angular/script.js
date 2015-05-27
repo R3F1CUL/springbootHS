@@ -10,15 +10,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         templateUrl: '/partials/second.html',
         controller: 'second'
       }).
+     when('/settings', {
+         templateUrl: '/partials/settings.html',
+         controller: 'second'
+     }).
      otherwise({
          redirectTo: '/overview'
      });
 }]); 
  
-app.controller('first', function($scope) {
-  $scope.list = [1,2,3,4,5];
+app.controller('first', function() {
+
 });
 
-app.controller('second', function($scope) {
-  $scope.list = [1,2,3];
+app.controller('second', function() {
+
 });
