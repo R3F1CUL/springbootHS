@@ -8,7 +8,22 @@
             <set />
           </value>
         </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/r3f1cul/hello/LoginController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/r3f1cul/hello/StudentController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/r3f1cul/hello/StudentRepository.java">
           <value>
             <set />
           </value>
@@ -29,6 +44,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/partials/analytics.html">
           <value>
             <set />
           </value>

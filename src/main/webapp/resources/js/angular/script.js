@@ -16,13 +16,18 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
      }).
      when('/analytics', {
          templateUrl: '/partials/analytics.html',
-         controller: 'second'
+         controller: 'AnalyticsController'
      }).
      otherwise({
          redirectTo: '/overview'
      });
 }]); 
- 
+
+app.controller('AnalyticsController', function($scope, $http) {
+    $http.get("http://www.w3schools.com/angular/customers.php")
+        .success(function(response) {$scope.names = response.records;});
+});
+
 app.controller('first', function() {
 
 });

@@ -1,5 +1,6 @@
 package com.r3f1cul.hello;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,19 +16,12 @@ import java.util.List;
 @EnableAutoConfiguration
 public class StudentController {
 
+  @Autowired
+  private StudentRepository studentRepository;
+
     @ResponseBody
     @RequestMapping("/students")
     private List<Student> getStudents() {
-        List<Student> studentList = new ArrayList<Student>();
-
-        Student student = new Student();
-        student.setAge(5);
-        student.setFirstName("First");
-        student.setLastName("Last");
-        student.setId((long) 1);
-
-        studentList.add(student);
-
-        return studentList;
+        return studentRepository.findAll();
     }
 }
