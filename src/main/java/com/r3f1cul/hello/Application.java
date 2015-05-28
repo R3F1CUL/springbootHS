@@ -19,11 +19,11 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         // save a couple of Students
-        studentRepository.save(new Student("Jack", "Bauer"));
-        studentRepository.save(new Student("Chloe", "O'Brian"));
-        studentRepository.save(new Student("Kim", "Bauer"));
-        studentRepository.save(new Student("David", "Palmer"));
-        studentRepository.save(new Student("Michelle", "Dessler"));
+        studentRepository.save(new Student("Jack", "Bauer", 25));
+        studentRepository.save(new Student("Chloe", "O'Brian", 88));
+        studentRepository.save(new Student("Kim", "Bauer", 40));
+        studentRepository.save(new Student("David", "Palmer", 21));
+        studentRepository.save(new Student("Michelle", "Dessler", 99));
 
         // fetch all Students
         System.out.println("Students found with findAll():");
