@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: '/partials/analytics.html',
             controller: 'AnalyticsController'
         }).
-        when('/student', {
+        when('/student/id/:id', {
             templateUrl: '/partials/student.html',
             controller: 'StudentController'
         }).
@@ -33,11 +33,14 @@ app.controller('AnalyticsController', function ($scope, $http) {
     });
 });
 
-app.controller('StudentController', function ($scope, $http) {
-    $http.get("/student/id/1").success(function (result) {
-        $scope.student = result;
-    });
-});
+app.controller('StudentController',  ['$scope','$http','$routeParams',
+    function ($scope, $http, $routeParams) {
+        $scope.params = $routeParams;
+        $http.get("/student/id/" + $scope.params).success(function (result) {
+            $scope.student = result;
+        });
+    }]
+);
 
 app.controller('ReportsController', function ($scope, $http) {
     $http.get("/students").success(function (result) {
@@ -56,5 +59,4 @@ $(document).ready(function () {
         $(".nav li").removeClass("active");
         $(this).addClass("active");
     });
-
 });
