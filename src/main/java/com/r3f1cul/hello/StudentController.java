@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +16,8 @@ import java.util.List;
 @EnableAutoConfiguration
 public class StudentController {
 
-  @Autowired
-  private StudentRepository studentRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @ResponseBody
     @RequestMapping("/students")
@@ -26,9 +25,15 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
-  @ResponseBody
-  @RequestMapping("/students/lastName/{lastName}")
-  private List<Student> getStudentByLastName(@PathVariable String lastName) {
-    return studentRepository.findStudentsByLastName(lastName);
-  }
+    @ResponseBody
+    @RequestMapping("/students/lastName/{lastName}")
+    private List<Student> getStudentByLastName(@PathVariable String lastName) {
+        return studentRepository.findStudentsByLastName(lastName);
+    }
+
+    @ResponseBody
+    @RequestMapping("/student/id/{id}")
+    private Student findStudentById(@PathVariable Long id) {
+        return studentRepository.findOne(id);
+    }
 }

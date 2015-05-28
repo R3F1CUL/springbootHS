@@ -8,11 +8,13 @@ import java.util.List;
  * Created by R3F1CUL on 5/26/2015.
  */
 public interface StudentRepository
-    extends CrudRepository<Student, Long> {
+        extends CrudRepository<Student, Long> {
 
-  List<Student> findStudentsByLastName(String lastName);
+    List<Student> findStudentsByLastName(String lastName);
 
-  List<Student> findAll();
+    List<Student> findAll();
 
-  Student[] findByLastName(String lastName);
+    Student[] findByLastName(String lastName);
+
+    Student findOne(Long id);
 }

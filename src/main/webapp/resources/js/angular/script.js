@@ -3,12 +3,12 @@ var app = angular.module('Main', ['ngRoute']);
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider.
         when('/overview', {
-            templateUrl: '/partials/first.html',
-            controller: 'first'
+            templateUrl: '/partials/overview.html',
+            controller: 'OverviewController'
         }).
         when('/reports', {
-            templateUrl: '/partials/second.html',
-            controller: 'second'
+            templateUrl: '/partials/reports.html',
+            controller: 'ReportsController'
         }).
         when('/settings', {
             templateUrl: '/partials/settings.html',
@@ -17,6 +17,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         when('/analytics', {
             templateUrl: '/partials/analytics.html',
             controller: 'AnalyticsController'
+        }).
+        when('/student', {
+            templateUrl: '/partials/student.html',
+            controller: 'StudentController'
         }).
         otherwise({
             redirectTo: '/overview'
@@ -29,12 +33,22 @@ app.controller('AnalyticsController', function ($scope, $http) {
     });
 });
 
-app.controller('first', function () {
-
+app.controller('StudentController', function ($scope, $http) {
+    $http.get("/student/id/1").success(function (result) {
+        $scope.student = result;
+    });
 });
 
-app.controller('second', function () {
+app.controller('ReportsController', function ($scope, $http) {
+    $http.get("/students").success(function (result) {
+        $scope.students = result;
+    });
+});
 
+app.controller('OverviewController', function ($scope, $http) {
+    $http.get("/students").success(function (result) {
+        $scope.students = result;
+    });
 });
 
 $(document).ready(function () {
