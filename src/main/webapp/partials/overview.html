@@ -1,24 +1,22 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="OverviewController as overviewController">
+<h2 class="sub-header" ng-controller="OverviewController as overviewController">Overview</h2>
 
-    <h2 class="sub-header">Overview</h2>
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="student in students">
-                <td>{{student.id}}</td>
-                <td><li><a href="#/student/id/{{student.id}}">{{student.firstName}}</a></li></td>
-                <td>{{student.lastName}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="student in students">
+            <td>{{student.id}}</td>
+            <td>
+                <li><a href="#/student/id/{{student.id}}">{{student.firstName}}</a></li>
+            </td>
+            <td>{{student.lastName}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
