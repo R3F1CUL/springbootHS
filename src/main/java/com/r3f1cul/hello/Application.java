@@ -5,15 +5,46 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+@EnableSwagger2
+@ComponentScan(basePackageClasses = {StudentController.class})
+public class Application
+    implements CommandLineRunner {
 
     @Autowired
     StudentRepository studentRepository;
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
+    }
+
+    @Bean
+    public Docket petApi() {
+        ApiInfo apiInfo = new ApiInfo("Api Documentation", "Student API", "1.0", "urn:tos",
+            "fake@email", "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0");
+        return new Docket(DocumentationType.SWAGGER_2)
+            .select()
+            .apis(RequestHandlerSelectors.basePackage("com.r3f1cul.hello"))
+            .paths(PathSelectors.any())
+            .build()
+            .pathMapping("/")
+            .enableUrlTemplating(true)
+            .apiInfo(apiInfo);
+    }
+
+    @Bean UiConfiguration uiConfig() {
+        return new UiConfiguration(
+            "validatorUrl");
     }
 
     @Override

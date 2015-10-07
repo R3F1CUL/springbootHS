@@ -17,19 +17,19 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @ResponseBody
-    @RequestMapping("/students")
+    @RequestMapping(value = "/students", method = RequestMethod.GET, produces = "application/json")
     private List<Student> getStudents() {
         return studentRepository.findAll();
     }
 
     @ResponseBody
-    @RequestMapping("/students/lastName/{lastName}")
+    @RequestMapping(value = "/students/lastName/{lastName}", method = RequestMethod.GET, produces = "application/json")
     private List<Student> getStudentByLastName(@PathVariable String lastName) {
         return studentRepository.findStudentsByLastName(lastName);
     }
 
     @ResponseBody
-    @RequestMapping("/student/id/{id}")
+    @RequestMapping(value = "/student/id/{id}", method = RequestMethod.GET, produces = "application/json")
     private Student findStudentById(@PathVariable long id) {
         return studentRepository.findOne(id);
     }
